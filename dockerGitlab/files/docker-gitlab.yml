@@ -1,0 +1,17 @@
+version: '2'
+services:
+ gitlab:
+   image: 'beginor/gitlab-ce:11.0.1-ce.0'  #beginor/gitlab-ce:latest  英文版
+   restart: always
+   hostname: 'gitlab.example.com'
+   environment:
+     GITLAB_OMNIBUS_CONFIG: |
+       external_url 'http://localhost'
+       # Add any other gitlab.rb configuration here, each on its own line
+   ports:
+     - '8000:80'
+     - '222:22'
+   volumes:
+     - '/docker-compose/gitlab_data/config:/etc/gitlab'
+     - '/docker-compose/gitlab_data/logs:/var/log/gitlab'
+     - '/docker-compose/gitlab_data/data:/var/opt/gitlab'

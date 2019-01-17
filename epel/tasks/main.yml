@@ -1,0 +1,32 @@
+---
+# author: lework
+
+- name: Check if EPEL repo 
+  stat: path={{ epel_repo_path }}
+  register: epel_repo_stat
+ 
+
+- name: Check if Docker repo
+  stat: path={{ epel_docker_path }}
+  register: epel_docker_stat
+
+- name: add docker repo
+  copy:
+    src=docker.repo  dest={{epel_docker_path}}
+  register: epel_docker_download.stat
+
+- name: add EPEL repo
+  get_url:
+    url={{ epel_repo_url }} dest={{ epel_repo_path }}
+  register: epel_repo__download.stat
+
+- name: install yum-utils
+  yum: name={{ item }} state=installed
+  with_items:
+  - vim
+  - net-tools
+  - yum-utils
+  - git
+  - ntpdate
+  - epel-release
+  notify: reload epel

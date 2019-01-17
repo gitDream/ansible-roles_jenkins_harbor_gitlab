@@ -1,0 +1,6 @@
+---
+- name: copy docker-compose
+  copy: src={{docker_Gitlab_compose}} dest={{docker_Gitlab_path}}
+
+- name: run docker-gitlab
+  shell: docker-compose -f "{{docker_Gitlab_path}}" up -d
