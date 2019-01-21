@@ -1,0 +1,9 @@
+FROM jenkins/jenkins:2.83
+
+USER root
+ADD apache-maven-3.5.2-bin.tar.gz  /usr/local/
+COPY repository /var/
+RUN  rm -rf /etc/profile 
+COPY profile  /etc/
+RUN /bin/bash /etc/profile
+#USER jenkins

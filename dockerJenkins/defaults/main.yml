@@ -1,0 +1,9 @@
+---
+# author: lework
+data_path: "/Docker-jenkins/"
+docker_Jenkins_path: "{{data_path}}{{docker_Jenkins_compose}}"
+docker_Images_path: "{{data_path}}{{docker_Images}}"
+jenkinsVersion: "jenkins:v2.8"
+docker_Jenkins_compose: "docker-jenkins.yml"
+docker_Images: "jenkins-images.tar"
+jenkins_Images_url: "http://mydown.top/jenkins-images.tar" 

@@ -1,0 +1,16 @@
+---
+- name: create file
+  file: path={{data_path }} state=directory
+
+
+- name: download  dockerImages
+  get_url: url="{{jenkins_Images_url}}" dest={{docker_Jenkins_path}} mode=0755
+
+- name: copy docker-compose
+  copy: src={{docker_Jenkins_compose}} dest={{docker_Jenkins_path}}
+
+- name: Read jenkins-images
+  shell: docker load < {{docker_Images_path}}
+
+- name: run docker-jenins
+  shell: docker-compose -f {{ docker_Jenkins_path }} up -d

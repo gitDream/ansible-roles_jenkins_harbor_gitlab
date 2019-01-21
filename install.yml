@@ -1,17 +1,18 @@
-- hosts: all
-  remote_user: root
-  roles:
-  - epel
-  - docker
-- hosts: node_50
-  remote_user: root
-  roles:
-  - dockerJenkins
-- hosts: node_60
-  remote_user: root
-  roles:
-  - dockerGitlab
+#- hosts: os7
+#  remote_user: root
+#  roles:
+#  - epel
+#  - docker
+
+#- hosts: node_50
+#  remote_user: root
+#  roles:
+#  - dockerJenkins
+#- hosts: node_60
+#  remote_user: root
+#  roles:
+#  - dockerGitlab
 - hosts: node_70
   remote_user: root
   roles:
-  - dockerHarbor
+  - dockerJenkins

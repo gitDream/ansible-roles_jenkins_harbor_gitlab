@@ -1,0 +1,15 @@
+version: '2'
+services:
+  my_jenkins:
+    image: jenkins:v1
+    container_name: myjenkins
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - /home/jenkins-data:/var/jenkins_home
+      - /home/maven-repository:/var/repository
+  #    - /bin/docker:/usr/bin/docker
+  #    - /var/run/docker.sock:/var/run/docker.sock
+
+    ports:
+      - "80:8080"
+      - "5000:50000"
