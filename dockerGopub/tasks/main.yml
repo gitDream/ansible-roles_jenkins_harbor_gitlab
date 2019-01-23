@@ -1,0 +1,9 @@
+---
+- name: create file
+  file: path={{data_path }} state=directory
+
+- name: copy docker-compose
+  copy: src={{docker_Gopub_compose}} dest={{docker_Gopub_path}}
+
+- name: run docker-Gopub
+  shell: docker-compose -f {{docker_Gopub_path}} up -d

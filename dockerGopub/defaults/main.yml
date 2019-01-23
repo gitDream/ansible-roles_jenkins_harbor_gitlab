@@ -1,0 +1,6 @@
+---
+# author: lework
+data_path: "/docker-compose/"
+docker_Gopub_compose: "docker-gopub.yml"
+docker_Gopub_path: "{{data_path}}{{docker_Gopub_compose}}"
+

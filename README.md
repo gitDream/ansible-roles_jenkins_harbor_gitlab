@@ -51,3 +51,15 @@ Example Playbook
 
 
 未完 测试阶段。。。。。。。。。。！
+{files,templates,vars,handlers,meta,default,tasks} 
+
+tasks : 用于存放role_A的主要任务，也可以添加其他task文件，供main.yaml调用，从而实现更加复杂的部署功能。
+handlers : 用于存放触发执行（ hanlders ）的任务。
+defaults : 用于存放默认变量，优先级最低，变量优先级可参考《ansible基础-变量》。
+vars : 用于存放变量文件，role_A中任务和模版里用到的变量可以在这里定义。
+files ：用于存放需要拷贝到目的主机的文件，例如，作为「copy」模块src参数的默认根目录。
+template : 用于存放模版文件，格式为.j2，文件内容要符合Jinja2语法规则，通常使用「template」模块部署服务的配置文件。
+meta : 用于存放role依赖列表，这个知识点后面会详细阐述。
+tests : 用于存放测试role本身功能的playbook和主机定义文件，在开发测试阶段比较常用。
+
+在各roles目录下创建 vars/main.yml 重写变量 默认变量目录 default/main.yml

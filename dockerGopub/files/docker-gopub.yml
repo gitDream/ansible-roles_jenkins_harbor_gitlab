@@ -1,0 +1,39 @@
+version: '2'
+services:
+   gopub-mysql:
+    image: "mysql:5.7"
+    container_name: gopub-db
+    restart: always
+    ports:
+      - "3306:3306"
+#   volumes:
+#   env_file:
+#     - ./data-info.env
+    environment:
+      - HOSTNAME=gopub-mysql
+      - MYSQL_USER=gopub #DB_NAME
+      - MYSQL_ROOT_PASSWORD=237356573 #ROOT_password
+      - MYSQL_PASSWORD=237356573 #DB_password
+      - MYSQL_DATABASE=walle #库名
+    command: "--character-set-server=utf8 --collation-server=utf8_bin"
+
+   gophub:
+    image: 'lc13579443/gopub'
+    container_name: gopub-web
+    restart: always
+    hostname: 'gopub'
+    environment:
+      - MYSQL_HOST=gopub-mysql #ip && hostname
+      - MYSQL_PORT=3306
+      - MYSQL_USER=gopub
+      - MYSQL_PASS=237356573
+      - MYSQL_DB=walle
+    depends_on:
+       - gopub-mysql
+    links:
+       - gopub-mysql:gopub-mysql
+        # Add any other gitlab.rb configuration here, each on its own line
+    ports:
+      - '8192:8192'
+#    volumes:
+#      - '/docker-compose/gopub_data/config:/etc/gitlab'

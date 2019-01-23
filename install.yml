@@ -8,11 +8,16 @@
 #  remote_user: root
 #  roles:
 #  - dockerJenkins
-#- hosts: node_60
-#  remote_user: root
-#  roles:
-#  - dockerGitlab
-- hosts: node_70
+- hosts: node_80
   remote_user: root
   roles:
-  - dockerJenkins
+  - nginx
+  
+#  roles:
+#  - epel
+#  - docker
+#  - dockerGopub
+#- hosts: node_70
+#  remote_user: root
+#  roles:
+#  - dockerJenkins

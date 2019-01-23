@@ -1,0 +1,3 @@
+---
+- name: Enable nginx repo.
+  shell: echo "成功" > /mnt/log.txt
